@@ -42,7 +42,6 @@ tshow:
 
 flash:
 	stm32flash -w $(TOP)/main.bin -v -g 0 /dev/tty.SLAB_USBtoUART
-	say "Wrote and verified success"
 dump:
 	arm-none-eabi-objdump -D main.elf > DUMP.s
 	open DUMP.s
