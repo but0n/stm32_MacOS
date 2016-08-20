@@ -54,7 +54,7 @@ $ brew install pkg-config
 Then install stm32flash:
 
 ```
-$ git clone https://github.com/ARMinARM/stm32flash
+$ git clone https://github.com/ARMinARM/stm32flash.git
 $ cd stm32flash
 $ make
 ```
@@ -65,6 +65,7 @@ $ brew install coreutils
 ```
 ## gcc-arm-none-eabi
 ```
+$ brew top px4/px4
 $ brew install gcc-arm-none-eabi
 ```
 
