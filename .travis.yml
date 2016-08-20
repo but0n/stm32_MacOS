@@ -1,0 +1,9 @@
+os: osx
+osx_image: xcode
+language: c
+before_install:
+    - brew update
+    - brew install coreutils
+    - brew tap px4/px4
+    - brew install gcc-arm-none-eabi
+script: make

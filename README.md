@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/but0n/stm32_development_on_Mac.png)](https://travis-ci.org/but0n/stm32_development_on_Mac)
 ## Config
 ```
 $ ls -l /dev/ 
