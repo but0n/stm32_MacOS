@@ -1,5 +1,5 @@
 # general Makefile
-# make OptLIB=0 OptSRC=0 all tshow  
+# make OptLIB=0 OptSRC=0 all tshow
 include Makefile.common
 LDFLAGS=$(COMMONFLAGS) -fno-exceptions -ffunction-sections -fdata-sections -L$(LIBDIR) -nostartfiles -Wl,--gc-sections,-Tlinker.ld
 
@@ -8,7 +8,7 @@ LDLIBS+=-lstm32
 
 STARTUP=startup.c
 
-all: libs src
+all: clean libs src
 	$(CC) -o $(PROGRAM).elf $(LDFLAGS) \
 		-Wl,--whole-archive \
 			src/app.a \
@@ -46,3 +46,5 @@ dump:
 	arm-none-eabi-objdump -D main.elf > DUMP.s
 	open DUMP.s
 	say "Bazinga"
+tty: flash
+	screen /dev/tty.SLAB_USBtoUART 115200
