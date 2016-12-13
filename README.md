@@ -1,58 +1,31 @@
-[![Build Status](https://travis-ci.org/but0n/stm32_MacOS.svg?branch=master)](https://travis-ci.org/but0n/stm32_MacOS)
-## Config
-```
-$ ls -l /dev/
-```
-* Find your device name (Mine is `tty.SLAB_USBtoUART`)</br>
-* Then change Makefile (`flash`)
+# stm32 MacOS	[![Build Status](https://travis-ci.org/but0n/stm32_MacOS.svg?branch=master)](https://travis-ci.org/but0n/stm32_MacOS)
 
-And Config file `linker.ld`
+Simple Yet Powerful SDK for stm32f1
 
-
-## Usage
-```
-$ make
-```
-> Cross compile `/src`
+## Installation
 
 ```
-$ make flash
-```
-> Flash
-
-```
-$ make dump
-```
-> Disassembly
-
-```
-$ make clean
+$ brew tap px4/px4
+$ brew install gcc-arm-none-eabi
 ```
 
-# You may need some tools as follows:
+```
+$ git clone https://github.com/but0n/stm32_MacOS.git
+```
+You may need some tools as follows:
 
 * `stm32flash` </br>
 Flash program for the STM32 ARM processors using the ST serial bootloader over UART or I2C
 * `coreutils` </br>
-Readlink
-* `gcc-arm-none-eabi`
+Read Path
 
-## stm32flash
-install some tools that `make` need:
+stm32flash
 
 ```
 $ brew install autoconf
-```
-
-```
 $ brew install automake
-```
-
-```
 $ brew install pkg-config
 ```
-
-Then install stm32flash:
 
 ```
 $ git clone https://github.com/ARMinARM/stm32flash.git
@@ -60,12 +33,52 @@ $ cd stm32flash
 $ make
 ```
 
-## coreutils
+coreutils
+
 ```
 $ brew install coreutils
 ```
-## gcc-arm-none-eabi
+
+
+## Makefile Config
+
 ```
-$ brew top px4/px4
-$ brew install gcc-arm-none-eabi
+$ ls -l /dev/
 ```
+* Find your device name (Like  `tty.SLAB_USBtoUART`)</br>
+* Change Makefile (`flash`)
+
+And Config `linker.ld`
+
+
+## Usage
+
+```
+$ make
+```
+
+ - Cross compile
+
+```
+$ make flash
+```
+
+ -  Flash program
+
+```
+$ make dump
+```
+
+ - Disassembly
+
+```
+$ make clean
+```
+
+ - Clean
+
+```
+$ make tty
+```
+
+ - Serial debug after flash program
