@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.org/but0n/stm32_Mac.png)](https://travis-ci.org/but0n/stm32_Mac)
 ## Config
 ```
-$ ls -l /dev/ 
+$ ls -l /dev/
 ```
 * Find your device name (Mine is `tty.SLAB_USBtoUART`)</br>
 * Then change Makefile (`flash`)
@@ -23,7 +23,7 @@ $ make flash
 ```
 $ make dump
 ```
-> Disassembly 
+> Disassembly
 
 ```
 $ make clean
@@ -69,4 +69,3 @@ $ brew install coreutils
 $ brew top px4/px4
 $ brew install gcc-arm-none-eabi
 ```
-
