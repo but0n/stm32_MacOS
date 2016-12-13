@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/but0n/stm32_Mac.png)](https://travis-ci.org/but0n/stm32_Mac)
+[![Build Status](https://travis-ci.org/but0n/stm32_MacOS.svg?branch=master)](https://travis-ci.org/but0n/stm32_MacOS)
 ## Config
 ```
 $ ls -l /dev/
