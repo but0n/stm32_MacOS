@@ -38,9 +38,10 @@ $ make tty
 
 ## In-System Programming
 
-#### stm32flash (with USART):
+### stm32flash (with USART):
 
-Installation:
+ - Installation:
+
 ```
 $ brew install autoconf
 $ brew install automake
@@ -49,21 +50,24 @@ $ git clone https://github.com/ARMinARM/stm32flash.git
 $ cd stm32flash
 $ make
 ```
-Usage:
+ - Usage:
+
 ```
 make tty
 ```
 
-#### dfu-util (with USB):
+### dfu-util (with USB):
 *Note: This way is only supply `STM32F105xx/107xx` devices. An external clock (8 MHz, 14.7456 MHz or 25 MHz.) is required for DFU
 and CAN bootloader execution after the selection phase.*
 
-Installation:
+ - Installation:
+
 ```
 brew install dfu-util
 ```
 
-Usage:
+ - Usage:
+
 ```
 make dfu
 ```
