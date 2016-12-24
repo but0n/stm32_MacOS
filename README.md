@@ -5,12 +5,8 @@ Simple Yet Powerful SDK for stm32f1
 ## Installation
 
 ```
-$ brew tap px4/px4
-$ brew install gcc-arm-none-eabi
-```
-
-```
 $ git clone https://github.com/but0n/stm32_MacOS.git
+$ cd stm32_MacOS && make install
 ```
 
 ## Usage
