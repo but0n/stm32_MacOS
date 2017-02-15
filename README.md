@@ -11,25 +11,29 @@ $ cd stm32_MacOS && make install
 
 ## Usage
 
+- Cross compile
+
 ```
 $ make
 ```
- - Cross compile
+
+- Disassembly
 
 ```
 $ make dump
 ```
- - Disassembly
+
+- Clean
 
 ```
 $ make clean
 ```
- - Clean
+
+- USART Serial debug
 
 ```
 $ make tty
 ```
- - USART Serial debug
 
 
 ## In-System Programming
