@@ -1,4 +1,4 @@
-# stm32 MacOS	[![Build Status](https://travis-ci.org/but0n/stm32_MacOS.svg?branch=master)](https://travis-ci.org/but0n/stm32_MacOS) [![Releases](https://img.shields.io/github/release/but0n/stm32_MacOS.svg)](https://github.com/but0n/stm32_MacOS/releases) [![platform](https://img.shields.io/badge/platform-MacOS | Linux-orange.svg)](#)
+# stm32 MacOS	[![Build Status](https://travis-ci.org/but0n/stm32_MacOS.svg?branch=master)](https://travis-ci.org/but0n/stm32_MacOS) [![Releases](https://img.shields.io/github/release/but0n/stm32_MacOS.svg)](https://github.com/but0n/stm32_MacOS/releases) [![platform](https://img.shields.io/badge/platform-MacOS%20%7C%20Linux-orange.svg)](#)
 
 
 Simple Yet Powerful SDK for stm32f1
@@ -12,25 +12,25 @@ $ cd stm32_MacOS && make install
 
 ## Usage
 
-- Cross compile
+Cross compile
 
 ```
 $ make
 ```
 
-- Disassembly
+Disassembly
 
 ```
 $ make dump
 ```
 
-- Clean
+Clean
 
 ```
 $ make clean
 ```
 
-- USART Serial debug
+USART Serial debug
 
 ```
 $ make tty
