@@ -1,10 +1,5 @@
-#include "uart.h"
 #include "stm32f10x.h"
-#include "MPU6050.h"
-SixAxis data;
-
-int top = -1;	//Stack Pointer
-char gCmdCache[CMD_MAX_LENGTH];
+#include "uart.h"
 
 
 void uart_init(unsigned int pclk2, unsigned int bound) {
@@ -34,8 +29,6 @@ void uart_init(unsigned int pclk2, unsigned int bound) {
 
     USART1->SR;     //Read Reg SR to Clean TXE and TE,(Reset value: 0x00C0)
 
-
-
 	NVIC_EnableIRQ(USART1_IRQn);
 	NVIC_SetPriority(USART1_IRQn, 3);
 
@@ -43,31 +36,13 @@ void uart_init(unsigned int pclk2, unsigned int bound) {
 
 void USART1_IRQHandler(void) {
 	if(USART1->SR & USART_SR_RXNE) {
-		const char cmd = USART1->DR;	// 读取串口接收寄存器来清除 RXNE 标志
+		const char cmd = USART1->DR;
 		switch (cmd) {
-			case TOKEN_START:	//$ - 命令起始标志
-				MPU6050_getStructData(&data);
-				IMU_Comput(data);
-
-				// MPU6050_debug(&data);
-				// UART_CR();
-
-				// uart_sendStr("Pitch: ");
-				uart_Float2Char(g_Pitch);
-				uart_sendStr("@");
-				// uart_sendStr("\tRoll: ");
-				uart_Float2Char(g_Roll);
-				uart_sendStr("@");
-
-				// uart_sendStr("\tYaw: ");
-				uart_Float2Char(g_Yaw);
-				uart_sendStr("\n\r");
-				break;
 			case '>':	// Jump to bootloader
 				uart_sendStr("Running bootloader...");
 				jump2ISP();
 				// NOTE: running bootloader
-			default:	//其它按键
+			default:
 				break;
 		}
 	}

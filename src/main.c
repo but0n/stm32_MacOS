@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#include "uart.h"
 
 #define NVIC_GROUPING	3
 
