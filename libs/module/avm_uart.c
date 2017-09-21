@@ -1,5 +1,21 @@
-#include "stm32f10x.h"
-#include "uart.h"
+#include "avm_core.h"
+
+static unsigned char avm_uart_init(void *conf);
+static unsigned int avm_uart_conf[] = {72, 115200};
+
+avm_module_t avm_uart_module_st = {
+    0,
+    &avm_uart_conf[0],
+    avm_uart_init,
+    NULL,
+    NULL
+};
+
+
+static unsigned char avm_uart_init(void *conf) {
+    uart_init(((unsigned int *)conf)[0], ((unsigned int *)conf)[1]);
+    return 0;
+}
 
 
 void uart_init(unsigned int pclk2, unsigned int bound) {
@@ -36,13 +52,13 @@ void uart_init(unsigned int pclk2, unsigned int bound) {
 
 void USART1_IRQHandler(void) {
 	if(USART1->SR & USART_SR_RXNE) {
-		const char cmd = USART1->DR;
+		const char cmd = USART1->DR;	// 读取串口接收寄存器来清除 RXNE 标志
 		switch (cmd) {
 			case '>':	// Jump to bootloader
 				uart_sendStr("Running bootloader...");
 				jump2ISP();
 				// NOTE: running bootloader
-			default:
+			default:	//其它按键
 				break;
 		}
 	}
@@ -53,15 +69,10 @@ void uart_sendData(unsigned char data) {
     while((USART1->SR & 0x40) == 0);
 }
 
-void uart_sendStr(char *cmd) {
-	while(*cmd)
-		uart_sendData(*cmd++);
-}
-
-void uart_int2char(unsigned int k) {
-	char cache[] = "0000000000";	// Max value is 4294967295
-	unsigned char i = 9;
-	const unsigned int bit[] = {1000000000, 100000000, 10000000, 1000000, 100000, 10000, 1000, 100, 10, 1};
+void uart_short2char(short k) {
+	char cache[] = "00000";
+	int i = 4;
+	unsigned short bit[] = {10000, 1000, 100, 10, 1};
 
 	do {
 		cache[i] += (char)(k / bit[i] % 10);
@@ -69,10 +80,10 @@ void uart_int2char(unsigned int k) {
 	uart_sendStr(cache);
 }
 
-void uart_short2char(unsigned short k) {
-	char cache[] = "00000";	// Max value is 4294967295
-	unsigned char i = 4;
-	const unsigned int bit[] = {10000, 1000, 100, 10, 1};
+void uart_int2char(unsigned int k) {
+	char cache[] = "0000000000";	// Max value is 4294967295
+	unsigned char i = 9;
+	const unsigned int bit[] = {1000000000, 100000000, 10000000, 1000000, 100000, 10000, 1000, 100, 10, 1};
 
 	do {
 		cache[i] += (char)(k / bit[i] % 10);
@@ -132,4 +143,9 @@ unsigned char uart_Float2Char(float value) {
     }
 
     return i;
+}
+
+void uart_sendStr(char *cmd) {
+	while(*cmd)
+		uart_sendData(*cmd++);
 }
